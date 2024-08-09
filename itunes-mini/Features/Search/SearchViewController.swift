@@ -11,7 +11,7 @@ class SearchViewController: BaseViewController<SearchView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         
     }
 
 
