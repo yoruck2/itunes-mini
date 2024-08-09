@@ -22,7 +22,7 @@ final class ItunesTabBarController: UITabBarController {
         setViewControllers([todayVC, gameVC, applicationVC, arcadeVC, searchVC], animated: true)
         tabBar.tintColor = .systemBlue
         tabBar.backgroundColor = .white
-        
+//        tabBarController?.selectedIndex = 3
         if let items = tabBar.items {
             items[0].image = UIImage(systemName: "book")
             items[0].title = "투데이"

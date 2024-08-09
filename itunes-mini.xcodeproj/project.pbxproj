@@ -32,6 +32,10 @@
 		8432B7942C6601A30021225A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8432B7932C6601A30021225A /* IQKeyboardManagerSwift */; };
 		8432B7972C6601B60021225A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8432B7962C6601B60021225A /* Alamofire */; };
 		8432B79A2C6601CB0021225A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8432B7992C6601CB0021225A /* Kingfisher */; };
+		8432B79C2C6602B50021225A /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B79B2C6602B50021225A /* Search.swift */; };
+		8432B79E2C6617480021225A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B79D2C6617480021225A /* Router.swift */; };
+		8432B7A02C663EB40021225A /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B79F2C663EB40021225A /* SearchCollectionViewCell.swift */; };
+		8432B7A32C66513C0021225A /* InfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B7A22C66513C0021225A /* InfoLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		8432B77C2C65FB860021225A /* ArcadeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeViewController.swift; sourceTree = "<group>"; };
 		8432B77E2C65FBE70021225A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		8432B7802C65FBED0021225A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		8432B79B2C6602B50021225A /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		8432B79D2C6617480021225A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		8432B79F2C663EB40021225A /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		8432B7A22C66513C0021225A /* InfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,7 @@
 				8432B7642C65F6350021225A /* App */,
 				8432B76F2C65F6DC0021225A /* BaseViews */,
 				8432B7662C65F66D0021225A /* Network */,
+				8432B7A12C6651040021225A /* CustonView */,
 				8432B7752C65F8180021225A /* Features */,
 				8432B7652C65F63B0021225A /* Resource */,
 				8432B75A2C65F5EC0021225A /* Info.plist */,
@@ -127,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				8432B7672C65F67D0021225A /* NetworkManager.swift */,
+				8432B79D2C6617480021225A /* Router.swift */,
+				8432B79B2C6602B50021225A /* Search.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -169,6 +180,7 @@
 				8432B7502C65F5EA0021225A /* SearchViewController.swift */,
 				8432B77E2C65FBE70021225A /* SearchViewModel.swift */,
 				8432B7802C65FBED0021225A /* SearchView.swift */,
+				8432B79F2C663EB40021225A /* SearchCollectionViewCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -203,6 +215,14 @@
 				8432B77C2C65FB860021225A /* ArcadeViewController.swift */,
 			);
 			path = Arcade;
+			sourceTree = "<group>";
+		};
+		8432B7A12C6651040021225A /* CustonView */ = {
+			isa = PBXGroup;
+			children = (
+				8432B7A22C66513C0021225A /* InfoLabel.swift */,
+			);
+			path = CustonView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,10 +323,14 @@
 				8432B77B2C65FB660021225A /* ApplicationViewController.swift in Sources */,
 				8432B77F2C65FBE70021225A /* SearchViewModel.swift in Sources */,
 				8432B7732C65F7CC0021225A /* ItunesNavigationController.swift in Sources */,
+				8432B7A32C66513C0021225A /* InfoLabel.swift in Sources */,
+				8432B79E2C6617480021225A /* Router.swift in Sources */,
 				8432B7812C65FBED0021225A /* SearchView.swift in Sources */,
 				8432B74F2C65F5EA0021225A /* SceneDelegate.swift in Sources */,
 				8432B76E2C65F6D60021225A /* BaseViewController.swift in Sources */,
+				8432B79C2C6602B50021225A /* Search.swift in Sources */,
 				8432B7792C65FB5B0021225A /* GameViewController.swift in Sources */,
+				8432B7A02C663EB40021225A /* SearchCollectionViewCell.swift in Sources */,
 				8432B76D2C65F6D60021225A /* BaseCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
