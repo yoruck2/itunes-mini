@@ -16,40 +16,38 @@ class SearchViewController: BaseViewController<SearchView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NetworkManager.shared.requestSearch(api: APIURL.search(term: "카카오"))
-            .subscribe { value in
-                print("next: \(value.resultCount)")
-            } onError: { error in
-                print("error: \(error)")
-            } onCompleted: {
-                print("completed")
-            } onDisposed: {
-                print("disposed")
-            }.disposed(by: disposeBag)
     }
     
     override func configureViewController() {
         rootView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: "SearchCollectionViewCell")
-        rootView.searchCollectionView.delegate = self
-        rootView.searchCollectionView.dataSource = self
         navigationItem.titleView = rootView.searchBar
     }
-}
-
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath) as? SearchCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        cell.appTitleLabel.text = "sdf"
-        cell.companyLabel.text = "sdfdfd"
-        cell.ratingLabel.text = "sdf"
-        cell.categoryLabel.text = "여행"
-        return cell
+    override func bindViewModel() {
+        
+        let input = SearchViewModel.Input(searchText: rootView.searchBar.rx.text.orEmpty, 
+                                          searchButtonClicked: rootView.searchBar.rx.searchButtonClicked,
+                                          itemSelected: rootView.searchCollectionView.rx.modelSelected(Application.self))
+        
+        let output = viewModel.transform(input: input)
+        
+        output.searchResultList
+            .bind(to: rootView.searchCollectionView.rx.items(cellIdentifier: "SearchCollectionViewCell", cellType: SearchCollectionViewCell.self)) {
+                (row, element, cell) in
+                
+                cell.setupCellData(data: element)
+            }.disposed(by: disposeBag)
+        
+        output.isSearchResultEmpty
+            .observe(on: MainScheduler.instance)
+            .bind(with: self) { owner, value in
+                owner.rootView.searchGuideLabel.isHidden = !value
+                owner.rootView.searchGuideLabel.text = "검색 결과가 없습니다."
+            }.disposed(by: disposeBag)
+        
+        output.itemSelected
+            .bind(with: self) { owner, vc in
+                owner.navigationController?.pushViewController(vc, animated: true)
+            }.disposed(by: disposeBag)
     }
 }
