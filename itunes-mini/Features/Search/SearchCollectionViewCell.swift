@@ -14,7 +14,7 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
 
     let appStackView = UIStackView().then {
         $0.spacing = 5
-        $0.distribution = .fillProportionally
+        $0.distribution = .equalCentering
         $0.alignment = .center
     }
     let appIconImageView = UIImageView().then {
@@ -23,6 +23,7 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
         $0.image = UIImage(systemName: "star")
     }
     let appTitleLabel = UILabel().then {
+        $0.font = .boldSystemFont(ofSize: 20)
         $0.textAlignment = .center
     }
     
@@ -45,8 +46,30 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
     let companyLabel = InfoLabel()
     let categoryLabel = InfoLabel()
     
-    func setupCellData(data: Search) {
-//        appIconImageView.kf.setImage(with: Source?)
+    func setupCellData(data: Application) {
+        let url = URL(string: data.artworkUrl60)
+        appIconImageView.kf.setImage(with: url)
+        appTitleLabel.text = data.trackName
+        
+        // TODO: 별은 init 시점에 미리 만들어두고 통신 받았을떄 평점 append는 안되나??
+        let attachmentImage = NSTextAttachment()
+        attachmentImage.image = UIImage(systemName: "star.fill")?.withTintColor(.systemBlue)
+        attachmentImage.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
+        
+        let attributedString = NSMutableAttributedString()
+        attributedString.append(NSAttributedString(attachment: attachmentImage))
+        let ratingString = NSAttributedString(
+            string: String(format: " %.1f", data.averageUserRating),
+            attributes: [
+                .baselineOffset: 4, // 텍스트의 베이스라인 조정
+                .font: UIFont.systemFont(ofSize: 16) // 폰트 크기 지정
+            ]
+        )
+        attributedString.append(ratingString)
+        ratingLabel.attributedText = attributedString
+        
+        companyLabel.text = data.artistName
+        categoryLabel.text = data.genres.first
     }
     
     override func configureHierarchy() {
