@@ -13,7 +13,6 @@ struct Search: Decodable {
 }
 
 struct Application: Decodable {
-    let artistViewUrl: String
     let artworkUrl60: String
     let artworkUrl100: String
     let artworkUrl512: String
@@ -23,8 +22,8 @@ struct Application: Decodable {
     let artistId: Int
     let artistName: String
     let genres: [String]
+    let averageUserRating: Double
     let description: String
     let releaseNotes: String
     let version: String
-    let averageUserRating: Int
 }

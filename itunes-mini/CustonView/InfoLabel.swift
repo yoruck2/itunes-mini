@@ -13,6 +13,7 @@ class InfoLabel: UILabel {
         super.init(frame: frame)
         textAlignment = .center
         textColor = .gray
+        font = .systemFont(ofSize: 15)
     }
     
     required init?(coder: NSCoder) {

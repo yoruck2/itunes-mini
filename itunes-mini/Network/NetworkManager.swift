@@ -43,12 +43,8 @@ final class NetworkManager {
                     observer.onError(APIError.unknownResponse)
                     return
                 }
-                /*
-            https://itunes.apple.com/search?parameterkeyvalue&term=%EC%B9%B4%EC%B9%B4%EC%98%A4&country=KR&media=software//            https://itunes.apple.com/search?parameterkeyvalue&query=%EC%B9%B4%EC%B9%B4%EC%98%A4&country=KR&media=software
-                 */
                 guard let response = response as? HTTPURLResponse,(200...299).contains(response.statusCode) else {
                     observer.onError(APIError.statusError)
-                    print(response)
                     return
                 }
                 print(response)
@@ -57,6 +53,7 @@ final class NetworkManager {
                     observer.onNext(appData)
                     observer.onCompleted()
                 } else {
+                    
                     observer.onError(APIError.decodingError)
                 }
             }.resume()

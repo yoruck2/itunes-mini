@@ -14,7 +14,7 @@ final class ItunesTabBarController: UITabBarController {
         super.viewDidLoad()
         
         let todayVC = ItunesNavigationController(TodayViewController())
-        let gameVC = ItunesNavigationController(SearchViewController())
+        let gameVC = ItunesNavigationController(GameViewController())
         let applicationVC = ItunesNavigationController(ApplicationViewController())
         let arcadeVC = ItunesNavigationController(ArcadeViewController())
         let searchVC = ItunesNavigationController(SearchViewController())
