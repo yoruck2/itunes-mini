@@ -24,6 +24,6 @@ struct Application: Decodable {
     let genres: [String]
     let averageUserRating: Double
     let description: String
-    let releaseNotes: String
+    let releaseNotes: String?
     let version: String
 }
