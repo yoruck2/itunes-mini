@@ -9,10 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SearchDetailViewController: BaseViewController<SearchDetailView> {
+final class SearchDetailViewController: BaseViewController<SearchDetailView> {
     
-    let disposeBag = DisposeBag()
-    let viewModel = SearchDetailViewModel()
+    private let disposeBag = DisposeBag()
+    private let viewModel = SearchDetailViewModel()
     
     //init 이 먼저
     init(data: Application) {
@@ -38,7 +38,7 @@ class SearchDetailViewController: BaseViewController<SearchDetailView> {
             }
             .disposed(by: disposeBag)
     }
-    func sendToViewModel(data: [String]) {
+    private func sendToViewModel(data: [String]) {
         viewModel.screenShotData.onNext(data)
         
     }

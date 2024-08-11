@@ -9,10 +9,9 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class DetailCollectionViewCell: BaseCollectionViewCell {
+final class DetailCollectionViewCell: BaseCollectionViewCell {
     
-    let screenShotImageView = UIImageView()
-    
+    private let screenShotImageView = UIImageView()
     
     func setUpCellImage(data:URL) {
         screenShotImageView.kf.setImage(with: data)

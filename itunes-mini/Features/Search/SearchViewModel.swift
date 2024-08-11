@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SearchViewModel {
+final class SearchViewModel {
     
     private let searchResult = PublishSubject<[Application]>()
     private var isSearchResultEmpty = PublishSubject<Bool>()

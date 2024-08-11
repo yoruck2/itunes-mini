@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DownloadButton: UIButton {
+final class DownloadButton: UIButton {
     
     init(_ text: String, style: UIButton.Configuration) {
         super.init(frame: .zero)

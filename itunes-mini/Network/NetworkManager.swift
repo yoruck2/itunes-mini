@@ -9,14 +9,16 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-enum APIError: Error {
-    case invalidURL
-    case unknownResponse
-    case statusError
-    case decodingError
-}
+
 
 final class NetworkManager {
+    
+    enum APIError: Error {
+        case invalidURL
+        case unknownResponse
+        case statusError
+        case decodingError
+    }
     
     let disposeBag = DisposeBag()
     static let shared = NetworkManager()
@@ -47,7 +49,6 @@ final class NetworkManager {
                     observer.onError(APIError.statusError)
                     return
                 }
-//                print(response)
                 if let data = data,
                    let appData = try? JSONDecoder().decode(Search.self, from: data) {
                     observer.onNext(appData)

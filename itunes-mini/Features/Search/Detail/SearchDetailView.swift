@@ -9,37 +9,37 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class SearchDetailView: BaseView {
+final class SearchDetailView: BaseView {
     
-    let scrollView = UIScrollView()
-    let contentView = BaseView()
+    private let scrollView = UIScrollView()
+    private let contentView = BaseView()
     
-    let appIconImageView = UIImageView().then {
+    private let appIconImageView = UIImageView().then {
         $0.layer.borderColor = UIColor(named: "lightGray")?.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
     }
-    let appNameLabel = UILabel().then {
+    private let appNameLabel = UILabel().then {
         $0.font = .boldSystemFont(ofSize: 25)
     }
-    let companyNameLabel = UILabel().then {
+    private let companyNameLabel = UILabel().then {
         $0.textColor = .gray
     }
     // TODO: filled 로 타이틀 안들어가네.. or 색 바꾸는법
-    let downloadButton = DownloadButton("받기", style: .filled())
-    let whatsNewLabel = UILabel().then {
+    private let downloadButton = DownloadButton("받기", style: .filled())
+    private let whatsNewLabel = UILabel().then {
         $0.text = "새로운 소식"
         $0.font = .boldSystemFont(ofSize: 18)
     }
-    let versionLabel = UILabel().then {
+    private let versionLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15)
         $0.textColor = .gray
     }
-    let releaseNoteTextView = UILabel().then {
+    private let releaseNoteTextView = UILabel().then {
         $0.numberOfLines = 0
     }
-    let descriptionLabel = UILabel().then {
+    private let descriptionLabel = UILabel().then {
         $0.numberOfLines = 0
     }
     
@@ -145,7 +145,7 @@ class SearchDetailView: BaseView {
         detailCollectionView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(releaseNoteTextView.snp.bottom).offset(20)
-            make.height.equalTo(UIScreen.main.bounds.width * 1.3)
+            make.height.equalTo(UIScreen.main.bounds.width)
         }
         
         descriptionLabel.snp.makeConstraints { make in

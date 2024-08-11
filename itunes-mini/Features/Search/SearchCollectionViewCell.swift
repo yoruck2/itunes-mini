@@ -12,31 +12,31 @@ import Kingfisher
 
 class SearchCollectionViewCell: BaseCollectionViewCell {
 
-    let appStackView = UIStackView().then {
+    private let appStackView = UIStackView().then {
         $0.spacing = 5
         $0.distribution = .equalCentering
         $0.alignment = .center
     }
-    let appIconImageView = UIImageView().then {
+    private let appIconImageView = UIImageView().then {
         $0.layer.cornerRadius = 10
         $0.clipsToBounds = true
         $0.image = UIImage(systemName: "star")
     }
-    let appTitleLabel = UILabel().then {
+    private let appTitleLabel = UILabel().then {
         $0.font = .boldSystemFont(ofSize: 20)
         $0.textAlignment = .center
     }
     
-    let downloadButton = DownloadButton("받기", style: .gray())
+    private let downloadButton = DownloadButton("받기", style: .gray())
     
-    let infoStackView = UIStackView().then {
+    private let infoStackView = UIStackView().then {
         $0.spacing = 5
         $0.distribution = .equalSpacing
         $0.alignment = .center
     }
-    let ratingLabel = InfoLabel()
-    let companyLabel = InfoLabel()
-    let categoryLabel = InfoLabel()
+    private let ratingLabel = InfoLabel()
+    private let companyLabel = InfoLabel()
+    private let categoryLabel = InfoLabel()
     
     func setupCellData(data: Application) {
         let url = URL(string: data.artworkUrl60)

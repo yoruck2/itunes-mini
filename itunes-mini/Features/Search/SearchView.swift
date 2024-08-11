@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SearchView: BaseView {
+final class SearchView: BaseView {
     
     let searchGuideLabel = UILabel().then {
         $0.text = "찾으시는 앱을 검색해주세요."

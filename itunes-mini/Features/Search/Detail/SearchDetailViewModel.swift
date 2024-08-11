@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 
-class SearchDetailViewModel {
+final class SearchDetailViewModel {
     
     private let disposeBag = DisposeBag()
     
