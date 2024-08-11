@@ -39,36 +39,59 @@ class SearchViewModel {
 extension SearchViewModel {
     
     private func searchClicked(_ tap: ControlEvent<Void>, text: ControlProperty<String>) {
-        
         tap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withLatestFrom(text)
+            .filter { !$0.isEmpty }
             .distinctUntilChanged()
             .map { "\($0)" }
-            .flatMap { value in
+            .flatMapLatest { [weak self] value in
                 NetworkManager.shared.requestSearch(api: APIURL.search(term: value))
+                    .catch { error in
+                        print("검색 에러 발생: \(error)")
+                        self?.isSearchResultEmpty.onNext(true)
+                        return Observable.just(Search(resultCount: 0, results: []))
+                    }
             }
-            .subscribe(with: self) { [weak self] owner, result in
-                if result.resultCount == 0 {
-                    self?.isSearchResultEmpty.onNext(true)
-                } else {
-                    self?.isSearchResultEmpty.onNext(false)
-                }
-                self?.searchResult.onNext(result.results)
-            } onError: { owner, error in
-                print("\(error)")
-            } onCompleted: { owner in
-                print("completed")
-            } onDisposed: { owner in
-                print("disposed")
-            }
+            .observe(on: MainScheduler.instance)
+            .do(onNext: { [weak self] result in
+                        self?.isSearchResultEmpty.onNext(result.resultCount == 0)
+                    })
+            .map { $0.results }
+            .bind(to: searchResult)
             .disposed(by: disposeBag)
+        
+//        tap
+//            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+//            .withLatestFrom(text)
+//            .filter { !$0.isEmpty }
+//            .distinctUntilChanged()
+//            .map { "\($0)" }
+//            .flatMapLatest { [weak self] value in
+//                NetworkManager.shared.requestSearch(api: APIURL.search(term: value))
+//                    .catch { error in
+//                        print("검색 에러 발생: \(error)")
+//                        self?.isSearchResultEmpty.onNext(true)
+//                        return Observable.just(Search(resultCount: 0, results: []))
+//                    }
+//            }
+//            .observe(on: MainScheduler.instance)
+//            .subscribe(with: self) { owner, result in
+//                if result.resultCount == 0 {
+//                    owner.isSearchResultEmpty.onNext(true)
+//                } else {
+//                    owner.isSearchResultEmpty.onNext(false)
+//                }
+//                owner.searchResult.onNext(result.results)
+//            }
+//            .disposed(by: disposeBag)
     }
+    
+    
     
     private func selectItem(_ data: ControlEvent<Application>) -> Observable<SearchDetailViewController> {
         data.map {
-            let nextVC = SearchDetailViewController()
-            nextVC.data = $0
+            let nextVC = SearchDetailViewController(data: $0)
             return nextVC
         }
     }

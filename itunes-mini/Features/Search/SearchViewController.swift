@@ -50,4 +50,5 @@ class SearchViewController: BaseViewController<SearchView> {
                 owner.navigationController?.pushViewController(vc, animated: true)
             }.disposed(by: disposeBag)
     }
+    
 }

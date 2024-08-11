@@ -27,15 +27,7 @@ class SearchCollectionViewCell: BaseCollectionViewCell {
         $0.textAlignment = .center
     }
     
-    let downloadButton = UIButton().then {
-        var configuration = UIButton.Configuration.gray()
-        configuration.cornerStyle = .capsule
-        configuration.baseForegroundColor = UIColor.systemBlue
-        var text = AttributedString("받기")
-        text.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        configuration.attributedTitle = text
-        $0.configuration = configuration
-    }
+    let downloadButton = DownloadButton("받기", style: .gray())
     
     let infoStackView = UIStackView().then {
         $0.spacing = 5
