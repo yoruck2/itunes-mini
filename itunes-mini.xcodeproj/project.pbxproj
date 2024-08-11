@@ -40,6 +40,7 @@
 		8432B7AC2C67846E0021225A /* SearchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B7AB2C67846E0021225A /* SearchDetailView.swift */; };
 		8432B7AE2C6784B50021225A /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B7AD2C6784B50021225A /* DetailCollectionViewCell.swift */; };
 		8432B7B02C6784C10021225A /* SearchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B7AF2C6784C10021225A /* SearchDetailViewModel.swift */; };
+		8432B7B22C67CC9C0021225A /* DownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B7B12C67CC9B0021225A /* DownloadButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		8432B7AB2C67846E0021225A /* SearchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailView.swift; sourceTree = "<group>"; };
 		8432B7AD2C6784B50021225A /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		8432B7AF2C6784C10021225A /* SearchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewModel.swift; sourceTree = "<group>"; };
+		8432B7B12C67CC9B0021225A /* DownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				8432B7A22C66513C0021225A /* InfoLabel.swift */,
+				8432B7B12C67CC9B0021225A /* DownloadButton.swift */,
 			);
 			path = CustonView;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				8432B74F2C65F5EA0021225A /* SceneDelegate.swift in Sources */,
 				8432B76E2C65F6D60021225A /* BaseViewController.swift in Sources */,
 				8432B7AC2C67846E0021225A /* SearchDetailView.swift in Sources */,
+				8432B7B22C67CC9C0021225A /* DownloadButton.swift in Sources */,
 				8432B79C2C6602B50021225A /* Search.swift in Sources */,
 				8432B7792C65FB5B0021225A /* GameViewController.swift in Sources */,
 				8432B7A02C663EB40021225A /* SearchCollectionViewCell.swift in Sources */,
