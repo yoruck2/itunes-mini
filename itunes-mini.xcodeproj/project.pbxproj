@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84321E4F2C6A3A0A00BA7FD7 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84321E4E2C6A3A0A00BA7FD7 /* BaseViewModel.swift */; };
 		8432B74D2C65F5EA0021225A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B74C2C65F5EA0021225A /* AppDelegate.swift */; };
 		8432B74F2C65F5EA0021225A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B74E2C65F5EA0021225A /* SceneDelegate.swift */; };
 		8432B7512C65F5EA0021225A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B7502C65F5EA0021225A /* SearchViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84321E4E2C6A3A0A00BA7FD7 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		8432B7492C65F5EA0021225A /* itunes-mini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "itunes-mini.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8432B74C2C65F5EA0021225A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8432B74E2C65F5EA0021225A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84321E4D2C6A39FD00BA7FD7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				84321E4E2C6A3A0A00BA7FD7 /* BaseViewModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		8432B7402C65F5EA0021225A = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 		8432B74B2C65F5EA0021225A /* itunes-mini */ = {
 			isa = PBXGroup;
 			children = (
+				84321E4D2C6A39FD00BA7FD7 /* Common */,
 				8432B7A42C6772380021225A /* extension */,
 				8432B7642C65F6350021225A /* App */,
 				8432B76F2C65F6DC0021225A /* BaseViews */,
@@ -350,6 +361,7 @@
 				8432B7B02C6784C10021225A /* SearchDetailViewModel.swift in Sources */,
 				8432B77D2C65FB860021225A /* ArcadeViewController.swift in Sources */,
 				8432B76A2C65F6CB0021225A /* BaseView.swift in Sources */,
+				84321E4F2C6A3A0A00BA7FD7 /* BaseViewModel.swift in Sources */,
 				8432B74D2C65F5EA0021225A /* AppDelegate.swift in Sources */,
 				8432B7722C65F7CC0021225A /* ItunesTabBarController.swift in Sources */,
 				8432B7AA2C6784490021225A /* SearchDetailViewController.swift in Sources */,
