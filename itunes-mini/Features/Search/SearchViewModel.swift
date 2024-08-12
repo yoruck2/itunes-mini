@@ -23,14 +23,14 @@ final class SearchViewModel {
     }
     
     struct Output {
-        let searchResultList: PublishSubject<[Application]>
+        let searchResultList: Driver<[Application]>
         let isSearchResultEmpty: PublishSubject<Bool>
         let itemSelected: Observable<SearchDetailViewController>
     }
     
     func transform(input: Input) -> Output {
         searchClicked(input.searchButtonClicked , text: input.searchText)
-        return Output(searchResultList: searchResult,
+        return Output(searchResultList: searchResult.asDriver(onErrorJustReturn: []),
                       isSearchResultEmpty: isSearchResultEmpty,
                       itemSelected: selectItem(input.itemSelected))
     }
@@ -45,15 +45,14 @@ extension SearchViewModel {
             .filter { !$0.isEmpty }
             .distinctUntilChanged()
             .map { "\($0)" }
-            .flatMapLatest { [weak self] value in
+            .flatMap { [weak self] value in
                 NetworkManager.shared.requestSearch(api: APIURL.search(term: value))
                     .catch { error in
                         print("검색 에러 발생: \(error)")
                         self?.isSearchResultEmpty.onNext(true)
-                        return Observable.just(Search(resultCount: 0, results: []))
-                    }
+                        return Single<Search>.never()
+                    }.debug()
             }
-            .observe(on: MainScheduler.instance)
             .do(onNext: { [weak self] result in
                         self?.isSearchResultEmpty.onNext(result.resultCount == 0)
                     })
@@ -86,8 +85,6 @@ extension SearchViewModel {
 //            }
 //            .disposed(by: disposeBag)
     }
-    
-    
     
     private func selectItem(_ data: ControlEvent<Application>) -> Observable<SearchDetailViewController> {
         data.map {

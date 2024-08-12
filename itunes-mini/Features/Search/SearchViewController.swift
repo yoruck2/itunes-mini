@@ -13,10 +13,6 @@ final class SearchViewController: BaseViewController<SearchView> {
     
     private let viewModel = SearchViewModel()
     private let disposeBag = DisposeBag()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func configureViewController() {
         rootView.searchCollectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: "SearchCollectionViewCell")
@@ -30,9 +26,9 @@ final class SearchViewController: BaseViewController<SearchView> {
                                           itemSelected: rootView.searchCollectionView.rx.modelSelected(Application.self))
         
         let output = viewModel.transform(input: input)
-        
+        // 드라이브로 바꿧음
         output.searchResultList
-            .bind(to: rootView.searchCollectionView.rx.items(cellIdentifier: "SearchCollectionViewCell", cellType: SearchCollectionViewCell.self)) {
+            .drive(rootView.searchCollectionView.rx.items(cellIdentifier: "SearchCollectionViewCell", cellType: SearchCollectionViewCell.self)) {
                 (row, element, cell) in
                 
                 cell.setupCellData(data: element)
